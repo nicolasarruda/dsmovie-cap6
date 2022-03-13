@@ -41,13 +41,14 @@ public class Movie implements Serializable {
 	public Movie() {
 	}
 
-	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis) {
+	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre) {
 		this.id = id;
 		this.title = title;
 		this.subTitle = subTitle;
 		this.year = year;
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
+		this.genre = genre;
 	}
 
 	public Long getId() {
@@ -96,6 +97,18 @@ public class Movie implements Serializable {
 
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
 	}
 
 	@Override

@@ -95,8 +95,6 @@ public class User implements Serializable, UserDetails {
 		return reviews;
 	}
 	
-	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
