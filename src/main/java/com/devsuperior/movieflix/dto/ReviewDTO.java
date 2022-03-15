@@ -6,6 +6,7 @@ public class ReviewDTO {
 
 	private String text;
 	private Long movieId;
+	private String email;
 	
 	public ReviewDTO() {
 	}
@@ -18,6 +19,7 @@ public class ReviewDTO {
 	public ReviewDTO(Review entity) {
 		text = entity.getText();
 		movieId = entity.getMovie().getId();
+		email = entity.getUser().getEmail();
 	}
 
 	public String getText() {
@@ -34,5 +36,13 @@ public class ReviewDTO {
 
 	public void setMovieId(Long movieId) {
 		this.movieId = movieId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -1,4 +1,4 @@
-package com.devsuperior.movieflix.resources;
+package com.devsuperior.movieflix.controllers;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.devsuperior.movieflix.services.GenreService;
 
 @RestController
 @RequestMapping(value = "/genres")
-public class GenreResource {
+public class GenreController {
 	
 	@Autowired
 	private GenreService genre;

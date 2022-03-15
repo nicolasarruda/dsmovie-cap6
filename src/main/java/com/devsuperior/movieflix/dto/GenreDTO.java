@@ -2,12 +2,16 @@ package com.devsuperior.movieflix.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.devsuperior.movieflix.entities.Genre;
 
 public class GenreDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotEmpty
 	private String name;
 	
 	public GenreDTO() {

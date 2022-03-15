@@ -4,51 +4,56 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devsuperior.movieflix.entities.Genre;
+import javax.validation.constraints.NotEmpty;
+
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
 
-public class MovieDTO implements Serializable {
+public class MovieReviewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private Long id;
-	private String title;
-	private String subTitle;
-	private String synopsis;
-	private Integer year;
 	
-	private String genre;
+	private Long id;
+	
+	@NotEmpty
+	private String title;
+	
+	@NotEmpty
+	private String subTitle;
+	
+	@NotEmpty
+	private String synopsis;
+	
+	@NotEmpty
+	private Integer year;
 	
 	private List<ReviewDTO> reviews = new ArrayList<>();
 	
-	public MovieDTO() {
-	}
-
-	public MovieDTO(Long id, String title, String subTitle, String synopsis, Integer year, GenreDTO genre) {
+	public MovieReviewDTO(Long id, String title, String subTitle, String synopsis,
+			Integer year) {
 		this.id = id;
 		this.title = title;
 		this.subTitle = subTitle;
 		this.synopsis = synopsis;
 		this.year = year;
 	}
-	
-	public MovieDTO(Movie entity) {
+
+
+	public MovieReviewDTO(Movie entity) {
 		id = entity.getId();
 		title = entity.getTitle();
 		subTitle = entity.getSubTitle();
 		synopsis = entity.getSynopsis();
 		year = entity.getYear();
+		
+		for(Review review: entity.getReviews()) {
+			this.reviews.add(new ReviewDTO(review));
+		}
 	}
 	
-	public MovieDTO(Movie entity, Genre genre, List<Review> reviews) {
-		this(entity);
-		this.genre = genre.getName();
-		reviews.forEach(rev -> this.reviews.add(new ReviewDTO(rev)));
-	}
-
 	public Long getId() {
 		return id;
 	}
+
 
 	public void setId(Long id) {
 		this.id = id;
@@ -84,14 +89,6 @@ public class MovieDTO implements Serializable {
 
 	public void setYear(Integer year) {
 		this.year = year;
-	}
-
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
 	}
 
 	public List<ReviewDTO> getReviews() {

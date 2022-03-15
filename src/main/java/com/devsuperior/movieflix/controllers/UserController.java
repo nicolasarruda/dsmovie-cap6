@@ -1,4 +1,4 @@
-package com.devsuperior.movieflix.resources;
+package com.devsuperior.movieflix.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import com.devsuperior.movieflix.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
 
 	@Autowired
 	private UserService service;
