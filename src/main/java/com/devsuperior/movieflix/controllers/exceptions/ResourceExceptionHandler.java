@@ -58,5 +58,4 @@ public class ResourceExceptionHandler {
 		OAuthCustomError err = new OAuthCustomError("Unauthorized", e.getMessage());
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 	}
-	
 }

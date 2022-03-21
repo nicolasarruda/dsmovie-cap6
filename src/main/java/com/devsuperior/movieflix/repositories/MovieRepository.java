@@ -11,7 +11,8 @@ import com.devsuperior.movieflix.entities.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 	
-	// Problema n + 1 consultas
-	@Query("SELECT obj FROM Movie obj WHERE obj.genre.id IN :genreId")
+	@Query("SELECT obj FROM Movie obj WHERE (obj.genre.id IN :genreId "
+			+ "OR :genreId NOT IN (SELECT obj.genre.id FROM Movie obj)) "
+			+ "ORDER BY obj.title ASC")
 	Page<Movie> findByGenre(Long genreId, Pageable pageable);
 }
